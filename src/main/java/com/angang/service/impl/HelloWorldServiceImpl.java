@@ -1,5 +1,6 @@
 package com.angang.service.impl;
 
+import cn.org.atool.fluent.mybatis.model.StdPagedList;
 import com.angang.domain.GetByConditionRequest;
 import com.angang.domain.GetByConditionResponse;
 import com.angang.entity.HelloWorldEntity;
@@ -66,7 +67,7 @@ public class HelloWorldServiceImpl implements HelloWorldService {
     }
 
     @Override
-    public PageInfo<HelloWorldEntity> getByConditionPage(GetByConditionRequest request) {
+    public PageInfo<HelloWorldEntity> getByConditionEntityPage(GetByConditionRequest request) {
         PageHelper.startPage(request.getCurrentPage(), request.getPageSize());
 //        List<GetByConditionResponse> helloWorldEntityList = this.getByCondition(request);
 //        PageInfo<GetByConditionResponse> pageInfo = new PageInfo<>(helloWorldEntityList);
@@ -75,5 +76,26 @@ public class HelloWorldServiceImpl implements HelloWorldService {
         PageInfo<HelloWorldEntity> pageInfo = new PageInfo<>(helloWorldEntities);
 
         return pageInfo;
+    }
+
+    @Override
+    public StdPagedList<GetByConditionResponse> getByConditionFluentPage(GetByConditionRequest request) {
+        int pageStart = (request.getCurrentPage()-1)*request.getPageSize();
+        int pageEnd = request.getPageSize();
+
+        StdPagedList<GetByConditionResponse> page = helloWorldMapper.stdPagedPoJo(GetByConditionResponse.class,
+            helloWorldMapper.query()
+                .select
+                .sayHello("sayHello")
+                .yourName("yourName")
+                .end()
+                .where
+                .applyIf(!StringUtils.isEmpty(request.getSayHello()), e-> e.and.sayHello().like(request.getSayHello()))
+                .applyIf(!StringUtils.isEmpty(request.getYourName()), e -> e.and.yourName().like(request.getYourName()))
+                .end()
+                .limit(pageStart, pageEnd)
+        );
+
+        return page;
     }
 }

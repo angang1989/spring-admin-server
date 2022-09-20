@@ -20,5 +20,7 @@ public interface HelloWorldService {
 
     void insert(HelloWorldEntity entity);
 
-    PageInfo<HelloWorldEntity> getByConditionPage(GetByConditionRequest request);
+    PageInfo<HelloWorldEntity> getByConditionEntityPage(GetByConditionRequest request);
+
+    StdPagedList<GetByConditionResponse> getByConditionFluentPage(GetByConditionRequest request);
 }

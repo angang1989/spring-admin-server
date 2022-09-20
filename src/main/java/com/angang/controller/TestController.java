@@ -1,5 +1,6 @@
 package com.angang.controller;
 
+import cn.org.atool.fluent.mybatis.model.StdPagedList;
 import com.angang.domain.GetByConditionResponse;
 import com.angang.entity.HelloWorldEntity;
 import com.angang.service.HelloWorldService;
@@ -49,6 +50,12 @@ public class TestController {
     @PostMapping("/getByConditionPage")
     public PageInfo<HelloWorldEntity> getByConditionPage(@RequestBody GetByConditionRequest request) {
 
-        return helloWorldService.getByConditionPage(request);
+        return helloWorldService.getByConditionEntityPage(request);
+    }
+
+    @PostMapping("/getByConditionFluentPage")
+    public StdPagedList<GetByConditionResponse> getByConditionFluentPage(@RequestBody GetByConditionRequest request) {
+
+        return helloWorldService.getByConditionFluentPage(request);
     }
 }
