@@ -1,6 +1,7 @@
 package com.example.springadminserver.controller;
 
 import com.example.springadminserver.domain.GetByConditionRequest;
+import com.example.springadminserver.domain.GetByConditionResponse;
 import com.example.springadminserver.entity.HelloWorldEntity;
 import com.example.springadminserver.mapper.HelloWorldMapper;
 import com.example.springadminserver.service.HelloWorldService;
@@ -42,8 +43,8 @@ public class TestController {
     }
 
     @PostMapping("/getByConditionAll")
-    public List<HelloWorldEntity> getByCondition(@RequestBody GetByConditionRequest request) {
-        List<HelloWorldEntity> list;
+    public List<GetByConditionResponse> getByCondition(@RequestBody GetByConditionRequest request) {
+        List<GetByConditionResponse> list;
 
         list = helloWorldService.getByCondition(request);
 
@@ -51,7 +52,7 @@ public class TestController {
     }
 
     @PostMapping("/getByConditionPage")
-    public PageInfo<HelloWorldEntity> getByConditionPage(@RequestBody GetByConditionRequest request) {
+    public PageInfo<GetByConditionResponse> getByConditionPage(@RequestBody GetByConditionRequest request) {
 
         return helloWorldService.getByConditionPage(request);
     }

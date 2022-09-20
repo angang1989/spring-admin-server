@@ -1,6 +1,7 @@
 package com.example.springadminserver.service.impl;
 
 import com.example.springadminserver.domain.GetByConditionRequest;
+import com.example.springadminserver.domain.GetByConditionResponse;
 import com.example.springadminserver.entity.HelloWorldEntity;
 import com.example.springadminserver.mapper.HelloWorldMapper;
 import com.example.springadminserver.service.HelloWorldService;
@@ -26,12 +27,24 @@ public class HelloWorldServiceImpl implements HelloWorldService {
 
 
     @Override
-    public List<HelloWorldEntity> getByCondition(GetByConditionRequest request) {
-        List<HelloWorldEntity> list = helloWorldMapper.listEntity(
+    public List<GetByConditionResponse> getByCondition(GetByConditionRequest request) {
+//        List<HelloWorldEntity> list = helloWorldMapper.listEntity(
+//            helloWorldMapper.query()
+//                .select
+//                .sayHello("sayHello")
+//                .yourName("yourName")
+//                .end()
+//                .where
+//                .applyIf(!StringUtils.isEmpty(request.getSayHello()), e-> e.and.sayHello().like(request.getSayHello()))
+//                .applyIf(!StringUtils.isEmpty(request.getYourName()), e -> e.and.yourName().like(request.getYourName()))
+//                .end()
+//        );
+
+        List<GetByConditionResponse> list = helloWorldMapper.listPoJos(GetByConditionResponse.class,
             helloWorldMapper.query()
                 .select
-                .sayHello()
-                .yourName()
+                .sayHello("sayHello")
+                .yourName("yourName")
                 .end()
                 .where
                 .applyIf(!StringUtils.isEmpty(request.getSayHello()), e-> e.and.sayHello().like(request.getSayHello()))
@@ -49,10 +62,10 @@ public class HelloWorldServiceImpl implements HelloWorldService {
     }
 
     @Override
-    public PageInfo<HelloWorldEntity> getByConditionPage(GetByConditionRequest request) {
+    public PageInfo<GetByConditionResponse> getByConditionPage(GetByConditionRequest request) {
         PageHelper.startPage(request.getCurrentPage(), request.getPageSize());
-        List<HelloWorldEntity> helloWorldEntityList = this.getByCondition(request);
-        PageInfo<HelloWorldEntity> pageInfo = new PageInfo<>(helloWorldEntityList);
+        List<GetByConditionResponse> helloWorldEntityList = this.getByCondition(request);
+        PageInfo<GetByConditionResponse> pageInfo = new PageInfo<>(helloWorldEntityList);
 
         return pageInfo;
     }
