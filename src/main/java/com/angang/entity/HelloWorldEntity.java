@@ -1,4 +1,4 @@
-package com.example.springadminserver.entity;
+package com.angang.entity;
 
 import cn.org.atool.fluent.mybatis.annotation.FluentMybatis;
 import cn.org.atool.fluent.mybatis.annotation.TableField;

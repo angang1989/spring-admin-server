@@ -1,9 +1,8 @@
-package com.example.springadminserver.service;
+package com.angang.service;
 
-import com.example.springadminserver.domain.GetByConditionRequest;
-import com.example.springadminserver.domain.GetByConditionResponse;
-import com.example.springadminserver.entity.HelloWorldEntity;
-import com.github.pagehelper.Page;
+import com.angang.domain.GetByConditionRequest;
+import com.angang.domain.GetByConditionResponse;
+import com.angang.entity.HelloWorldEntity;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;

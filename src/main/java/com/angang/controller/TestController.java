@@ -1,19 +1,14 @@
-package com.example.springadminserver.controller;
+package com.angang.controller;
 
-import com.example.springadminserver.domain.GetByConditionRequest;
-import com.example.springadminserver.domain.GetByConditionResponse;
-import com.example.springadminserver.entity.HelloWorldEntity;
-import com.example.springadminserver.mapper.HelloWorldMapper;
-import com.example.springadminserver.service.HelloWorldService;
+import com.angang.domain.GetByConditionResponse;
+import com.angang.entity.HelloWorldEntity;
+import com.angang.service.HelloWorldService;
+import com.angang.domain.GetByConditionRequest;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 

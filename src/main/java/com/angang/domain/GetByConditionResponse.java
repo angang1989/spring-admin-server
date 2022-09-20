@@ -1,4 +1,4 @@
-package com.example.springadminserver.domain;
+package com.angang.domain;
 
 import lombok.Data;
 

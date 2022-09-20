@@ -1,4 +1,4 @@
-package com.example.springadminserver.config;
+package com.angang.config;
 
 import cn.org.atool.fluent.mybatis.spring.MapperFactory;
 import org.mybatis.spring.annotation.MapperScan;

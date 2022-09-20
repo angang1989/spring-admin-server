@@ -1,4 +1,4 @@
-package com.example.springadminserver.config;
+package com.angang.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

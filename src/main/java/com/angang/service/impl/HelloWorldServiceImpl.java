@@ -1,11 +1,10 @@
-package com.example.springadminserver.service.impl;
+package com.angang.service.impl;
 
-import com.example.springadminserver.domain.GetByConditionRequest;
-import com.example.springadminserver.domain.GetByConditionResponse;
-import com.example.springadminserver.entity.HelloWorldEntity;
-import com.example.springadminserver.mapper.HelloWorldMapper;
-import com.example.springadminserver.service.HelloWorldService;
-import com.github.pagehelper.Page;
+import com.angang.domain.GetByConditionRequest;
+import com.angang.domain.GetByConditionResponse;
+import com.angang.entity.HelloWorldEntity;
+import com.angang.mapper.HelloWorldMapper;
+import com.angang.service.HelloWorldService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;

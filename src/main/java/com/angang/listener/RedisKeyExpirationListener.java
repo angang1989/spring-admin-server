@@ -1,4 +1,4 @@
-package com.example.springadminserver.listener;
+package com.angang.listener;
 
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.listener.KeyExpirationEventMessageListener;
