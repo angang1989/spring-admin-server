@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @date 2022/9/19 14:54
  */
 @Configuration
-@MapperScan("com.example.springadminserver.mapper")
+@MapperScan("com.angang.mapper")
 public class MybatisConfig {
     @Bean
     public MapperFactory mapperFactory() {

@@ -1,5 +1,6 @@
 package com.angang.service;
 
+import cn.org.atool.fluent.mybatis.model.StdPagedList;
 import com.angang.domain.GetByConditionRequest;
 import com.angang.domain.GetByConditionResponse;
 import com.angang.entity.HelloWorldEntity;
@@ -15,7 +16,9 @@ import java.util.List;
 public interface HelloWorldService {
     List<GetByConditionResponse> getByCondition(GetByConditionRequest request);
 
+    List<HelloWorldEntity> getByConditionBean(GetByConditionRequest request);
+
     void insert(HelloWorldEntity entity);
 
-    PageInfo<GetByConditionResponse> getByConditionPage(GetByConditionRequest request);
+    PageInfo<HelloWorldEntity> getByConditionPage(GetByConditionRequest request);
 }
