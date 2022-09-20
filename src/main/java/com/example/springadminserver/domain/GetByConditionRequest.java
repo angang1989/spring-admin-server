@@ -12,4 +12,8 @@ public class GetByConditionRequest {
     private String sayHello;
 
     private String yourName;
+
+    private int pageSize = 10;
+
+    private int currentPage = 1;
 }

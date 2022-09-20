@@ -10,9 +10,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://rm-uf61dg1417y0zra2r225.mysql.rds.aliyuncs.com/fosun_merchant?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://localhost:3306/study
       username: root
-      password: Foliday#0101PF
+      password: root
       platform: mysql
 
 server:
@@ -33,3 +33,10 @@ logging:
   level:
     com.example.springadminserver: debug
     com.chz.mapper: debug
+
+#pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

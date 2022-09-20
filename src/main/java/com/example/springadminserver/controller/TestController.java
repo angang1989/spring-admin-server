@@ -3,6 +3,8 @@ package com.example.springadminserver.controller;
 import com.example.springadminserver.domain.GetByConditionRequest;
 import com.example.springadminserver.entity.HelloWorldEntity;
 import com.example.springadminserver.mapper.HelloWorldMapper;
+import com.example.springadminserver.service.HelloWorldService;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -23,7 +25,7 @@ import java.util.Random;
 @Slf4j
 public class TestController {
     @Resource
-    HelloWorldMapper helloWorldMapper;
+    private HelloWorldService helloWorldService;
 
     @GetMapping("/test")
     public Long test() {
@@ -34,29 +36,23 @@ public class TestController {
         entity.setSayHello("hello" + r);
         entity.setYourName("world" + r);
 
-        helloWorldMapper.insert(entity);
+        helloWorldService.insert(entity);
 
         return entity.getId();
     }
 
-    @PostMapping("/getByCondition")
+    @PostMapping("/getByConditionAll")
     public List<HelloWorldEntity> getByCondition(@RequestBody GetByConditionRequest request) {
         List<HelloWorldEntity> list;
 
-        list = helloWorldMapper.listEntity(
-            helloWorldMapper.query()
-                .select
-                .sayHello()
-                .yourName()
-                .end()
-                .where
-                .applyIf(!StringUtils.isEmpty(request.getSayHello()), e-> e.and.sayHello().like(request.getSayHello()))
-                .applyIf(!StringUtils.isEmpty(request.getYourName()), e -> e.and.yourName().like(request.getYourName()))
-                .end()
-        );
+        list = helloWorldService.getByCondition(request);
 
         return list;
     }
 
+    @PostMapping("/getByConditionPage")
+    public PageInfo<HelloWorldEntity> getByConditionPage(@RequestBody GetByConditionRequest request) {
 
+        return helloWorldService.getByConditionPage(request);
+    }
 }
