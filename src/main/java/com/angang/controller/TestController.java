@@ -23,8 +23,8 @@ public class TestController {
     @Resource
     private HelloWorldService helloWorldService;
 
-    @GetMapping("/test")
-    public Long test() {
+    @GetMapping("/add")
+    public Long add() {
         Random random = new Random();
         int r = random.nextInt(100);
 
@@ -47,7 +47,7 @@ public class TestController {
     }
 
     @PostMapping("/getByConditionPage")
-    public PageInfo<GetByConditionResponse> getByConditionPage(@RequestBody GetByConditionRequest request) {
+    public PageInfo<HelloWorldEntity> getByConditionPage(@RequestBody GetByConditionRequest request) {
 
         return helloWorldService.getByConditionPage(request);
     }
