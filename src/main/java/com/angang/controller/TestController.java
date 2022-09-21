@@ -2,6 +2,7 @@ package com.angang.controller;
 
 import cn.org.atool.fluent.mybatis.model.StdPagedList;
 import com.angang.domain.GetByConditionResponse;
+import com.angang.domain.UpdateRequest;
 import com.angang.entity.HelloWorldEntity;
 import com.angang.service.HelloWorldService;
 import com.angang.domain.GetByConditionRequest;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -36,6 +38,24 @@ public class TestController {
         helloWorldService.insert(entity);
 
         return entity.getId();
+    }
+
+    @PostMapping("/update")
+    public String update(@RequestBody UpdateRequest request) {
+        HelloWorldEntity entity = helloWorldService.getById(request.getId());
+
+        if(Objects.isNull(entity)) {
+            return "failed";
+        }
+
+        HelloWorldEntity entityUpdate = new HelloWorldEntity();
+        entityUpdate.setId(entity.getId());
+        entityUpdate.setSayHello(request.getSayHello());
+        entityUpdate.setYourName(request.getYourName());
+
+        helloWorldService.update(entityUpdate);
+
+        return "success";
     }
 
     @PostMapping("/getByConditionAll")

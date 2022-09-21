@@ -67,6 +67,11 @@ public class HelloWorldServiceImpl implements HelloWorldService {
     }
 
     @Override
+    public void update(HelloWorldEntity entity) {
+        helloWorldMapper.updateById(entity);
+    }
+
+    @Override
     public PageInfo<HelloWorldEntity> getByConditionEntityPage(GetByConditionRequest request) {
         PageHelper.startPage(request.getCurrentPage(), request.getPageSize());
 //        List<GetByConditionResponse> helloWorldEntityList = this.getByCondition(request);
@@ -97,5 +102,10 @@ public class HelloWorldServiceImpl implements HelloWorldService {
         );
 
         return page;
+    }
+
+    @Override
+    public HelloWorldEntity getById(Long id) {
+        return helloWorldMapper.findById(id);
     }
 }
