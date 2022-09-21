@@ -1,3 +1,4 @@
 /.idea/
 /spring-admin-server.iml
 /target/
+/src/main/resources/application.yml
