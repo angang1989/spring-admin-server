@@ -1,11 +1,9 @@
 package com.angang.controller;
 
 import cn.org.atool.fluent.mybatis.model.StdPagedList;
-import com.angang.domain.GetByConditionResponse;
-import com.angang.domain.UpdateRequest;
+import com.angang.domain.*;
 import com.angang.entity.HelloWorldEntity;
 import com.angang.service.HelloWorldService;
-import com.angang.domain.GetByConditionRequest;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +40,7 @@ public class TestController {
 
     @PostMapping("/update")
     public String update(@RequestBody UpdateRequest request) {
-        HelloWorldEntity entity = helloWorldService.getById(request.getId());
+        HelloWorldEntity entity = helloWorldService.selectById(request.getId());
 
         if(Objects.isNull(entity)) {
             return "failed";
@@ -77,5 +75,15 @@ public class TestController {
     public StdPagedList<GetByConditionResponse> getByConditionFluentPage(@RequestBody GetByConditionRequest request) {
 
         return helloWorldService.getByConditionFluentPage(request);
+    }
+
+    @GetMapping("/aggregate")
+    public AggregateResponse aggregate() {
+        return helloWorldService.aggregate();
+    }
+
+    @GetMapping("/groupBy")
+    public List<GroupByResponse> groupBy() {
+        return helloWorldService.groupBy();
     }
 }

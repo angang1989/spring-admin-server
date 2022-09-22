@@ -23,6 +23,8 @@ public class HelloWorldEntity extends RichEntity {
 
     private String yourName;
 
+    private Integer score;
+
     @TableField(insert = "now()")
     private Date gmtCreated;
 
